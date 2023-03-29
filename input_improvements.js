@@ -5,7 +5,7 @@ inputs.forEach(item => item.addEventListener('whell',inputWheel));
 function inputWheel(event){
   event.preventDefault();
    if (this.getAttribute('step')) {
-    let step = this.getAttribute('step');
+    let step = +this.getAttribute('step');
    }
    else {
     step = 1

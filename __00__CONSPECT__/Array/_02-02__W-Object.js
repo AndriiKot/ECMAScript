@@ -32,7 +32,8 @@ console.log(array);
 // !!! WARNING !!!
 object1.price = '23'
 console.log(object1); // { name: 'pen', price: 23 }
-// !! array !!
+// !!! WARNING END !!!
+
 console.log(array);
 /*
 [

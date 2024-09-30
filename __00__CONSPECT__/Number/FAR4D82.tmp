@@ -1,0 +1,13 @@
+﻿
+const mainNumber = 37;
+
+const stringNumberHex = mainNumber.toString(16);
+const stringNumber8 = mainNumber.toString(8);
+const stringNumber10 = mainNumber.toString(10);
+const stringNumber2 = mainNumber.toString(2);
+
+
+console.log(stringNumberHex, stringNumber8, stringNumber10, stringNumber2); // 25 45 37 100101
+console.log(typeof [stringNumberHex, stringNumber8, stringNumber10, stringNumber2]);
+
+

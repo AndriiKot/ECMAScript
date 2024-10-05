@@ -1,0 +1,223 @@
+Символы (Symbol) в JavaScript — это примитивные типы данных, 
+которые создаются с помощью функции `Symbol()`. 
+Они гарантируют уникальные значения и 
+часто используются для обеспечения уникальности свойств объектов. 
+Вот несколько реальных примеров использования символов в JavaScript:
+
+### 1. Создание уникальных свойств объектов
+
+Символы могут использоваться для создания уникальных ключей, 
+которые не конфликтуют с любыми другими свойствами объекта.
+
+```javascript
+const uniqueId = Symbol('id');
+
+const user = {
+  name: 'John',
+  age: 30,
+  [uniqueId]: '1234567890' // уникальное свойство
+};
+
+console.log(user); // { name: 'John', age: 30 }
+console.log(user[uniqueId]); // '1234567890'
+```
+
+### 2. Скрытие свойств объекта
+
+Символы позволяют скрывать 
+некоторые свойства объекта от обычного перечисления.
+
+```javascript
+const hiddenProperty = Symbol('hidden');
+
+const obj = {
+  visible: true,
+  [hiddenProperty]: 'This is hidden'
+};
+
+for (const key in obj) {
+  console.log(key); // выводит только 'visible', скрытое свойство не выводится
+}
+
+console.log(obj[hiddenProperty]); // 'This is hidden'
+```
+
+### 3. Использование с встроенными объектами
+
+JavaScript имеет несколько встроенных символов, 
+которые можно использовать для установки определенного 
+поведения, таких как `Symbol.iterator`.
+
+```javascript
+const iterableObject = {
+  items: [1, 2, 3],
+  
+  [Symbol.iterator]() {
+    let index = 0;
+    const items = this.items;
+
+    return {
+      next() {
+        if (index < items.length) {
+          return { value: items[index++], done: false };
+        }
+        return { done: true };
+      }
+    };
+  }
+};
+
+for (const item of iterableObject) {
+  console.log(item); // 1, 2, 3
+}
+```
+
+### 4. Создание констант
+
+Символы могут использоваться для создания констант, 
+которые могут быть безопасно переданы в другие части кода.
+
+```javascript
+const STATUS_PENDING = Symbol('pending');
+const STATUS_COMPLETE = Symbol('complete');
+
+function getStatus(status) {
+  switch (status) {
+    case STATUS_PENDING:
+      return 'Pending...';
+    case STATUS_COMPLETE:
+      return 'Complete!';
+    default:
+      return 'Unknown status';
+  }
+}
+
+console.log(getStatus(STATUS_PENDING)); // 'Pending...'
+```
+
+### 5. Символы как уникальные идентификаторы для объектов
+
+Символы могут служить уникальными идентификаторами для объектов и их свойств.
+
+```javascript
+const id1 = Symbol('id');
+const id2 = Symbol('id');
+
+const obj1 = { [id1]: 'A' };
+const obj2 = { [id2]: 'B' };
+
+console.log(id1 === id2); // false
+console.log(obj1[id1]); // 'A'
+console.log(obj2[id2]); // 'B'
+```
+
+### Заключение
+
+Символы в JavaScript являются мощным инструментом 
+для избежания конфликтов имен, создания свойства, 
+которое не будет перезаписано, 
+и работы со встроенными механизмами языка. 
+Их использование может значительно повысить 
+безопасность и производительность вашего кода.
+
+В JavaScript `Symbol` — это примитивный тип данных, 
+который представляет уникальный идентификатор. 
+Он был добавлен в ECMAScript 2015 (ES6) 
+и используется в основном для создания уникальных свойств объектов. 
+Вот основные аспекты и методы, относящиеся к `Symbol` в JavaScript:
+
+### Создание символов
+
+1. **Создание символа:**
+   ```javascript
+   const mySymbol = Symbol('description');
+   ```
+
+2. **Глобальные символы:**
+   Если вы хотите создавать и использовать глобальные символы, вы можете использовать метод `Symbol.for()`:
+   ```javascript
+   const globalSymbol = Symbol.for('globalDescription');
+   ```
+
+3. **Получение глобального символа:**
+   Вы также можете получить символ, зарегистрированный ранее, используя `Symbol.for()`:
+   ```javascript
+   const sameGlobalSymbol = Symbol.for('globalDescription'); // Вернет тот же символ
+   ```
+
+### Методы и свойства
+
+1. **Symbol.keyFor(symbol)**
+   Этот метод возвращает строковое описание символа, 
+   если символ был создан с помощью `Symbol.for()`. 
+   Если символ не был зарегистрирован глобально, он вернет `undefined`.
+   
+   ```javascript
+   const globalSymbol = Symbol.for('mySymbol');
+   console.log(Symbol.keyFor(globalSymbol)); // "mySymbol"
+   ```
+
+2. **Методы `Symbol`**
+   - `Symbol.hasInstance`
+   - `Symbol.isConcatSpreadable`
+   - `Symbol.iterator`
+   - `Symbol.match`
+   - `Symbol.replace`
+   - `Symbol.search`
+   - `Symbol.split`
+   - `Symbol.toPrimitive`
+   - `Symbol.toStringTag`
+   - `Symbol.unscopables`
+
+### Использование символов
+
+- **Для уникальных свойств объектов:**
+  ```javascript
+  const myObj = {
+      [mySymbol]: 'value'
+  };
+  console.log(myObj[mySymbol]); // 'value'
+  ```
+
+- **Скрытие свойств от объектов:**
+  Символы не отображаются в большинстве методов, 
+  таких как `Object.keys()`, `JSON.stringify()`, и т.д.
+  ```javascript
+  const obj = {
+      [Symbol('id')]: 123,
+      name: 'Alice'
+  };
+
+  console.log(Object.keys(obj)); // ['name']
+  ```
+
+### Примечания
+
+- Символы всегда уникальны. 
+Даже если вы создадите два символа с одинаковым описанием, они будут разными:
+
+  ```javascript
+  const symbolA = Symbol('desc');
+  const symbolB = Symbol('desc');
+  console.log(symbolA === symbolB); // false
+  ```
+
+- Символы удобно использовать, чтобы избежать 
+  конфликтов имен свойств в объектах, 
+  особенно при работе с библиотеками и фреймворками.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

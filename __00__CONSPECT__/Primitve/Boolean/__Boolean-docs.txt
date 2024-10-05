@@ -1,0 +1,63 @@
+﻿Boolean в JavaScript — это один из примитивных типов данных, 
+который может принимать одно из двух значений: 
+`true` (истина) или `false` (ложь). Этот тип данных 
+часто используется для логических операций и условий.
+
+### Использование Boolean
+
+1. **Условия в операторах if**:
+
+```javascript
+let isActive = true;
+
+if (isActive) {
+    console.log("Пользователь активен.");
+} else {
+    console.log("Пользователь не активен.");
+}
+```
+
+2. **Логические операции**:
+
+```javascript
+let a = true;
+let b = false;
+
+console.log(a && b); // false
+console.log(a || b); // true
+console.log(!a);     // false
+```
+
+3. **Явное преобразование в Boolean**:
+
+В JavaScript можно использовать функцию `Boolean()` 
+для явного преобразования значения в булев тип:
+
+```javascript
+console.log(Boolean(0));          // false
+console.log(Boolean(1));          // true
+console.log(Boolean(""));         // false
+console.log(Boolean("Hello"));    // true
+console.log(Boolean(null));       // false
+console.log(Boolean(undefined));  // false
+```
+
+### Значения, которые приводятся к `false`
+
+- `false`
+- `0`
+- `""` (пустая строка)
+- `null`
+- `undefined`
+- `NaN` (не число)
+
+Все остальные значения приводятся к `true`.
+
+### Заключение
+
+Boolean в JavaScript является важным типом данных, 
+который используется для управления логикой 
+в коде и выполнения различных операций 
+на основе истинности или ложности условий.
+
+

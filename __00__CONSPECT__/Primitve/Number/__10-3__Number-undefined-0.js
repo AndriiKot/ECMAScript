@@ -1,8 +1,8 @@
 ﻿
 const numStr = undefined;
 
-const num = Number(numStr); // 0
+const num = Number(numStr); // NaN
 
-console.log(num);          // 0
+console.log(num);          // NaN
 console.log(typeof num);   // number
 

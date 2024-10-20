@@ -1,0 +1,140 @@
+﻿Метод `filter()` в JavaScript используется 
+для создания нового массива, в который включаются 
+только те элементы исходного массива, которые прошли проверку, 
+определённую в передаваемой в метод функции.
+
+Синтаксис:
+
+```javascript
+arr.filter(callback(element, index, array), thisValue)
+```
+
+Параметры:
+- `callback`: функция, которая будет вызываться для каждого элемента массива. 
+	Эта функция должна возвращать `true` или `false`, указывая, 
+	должен ли элемент быть добавлен в новый массив.
+- `element`: текущий обрабатываемый элемент массива.
+- `index`: индекс текущего элемента.
+- `array`: исходный массив.
+- `thisValue`: необязательное значение, 
+	используемое в качестве `this` при выполнении функции `callback`.
+
+Примеры:
+
+1. Фильтрация массива чисел, оставляя только чётные числа:
+
+```javascript
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const evenNumbers = numbers.filter(num => num % 2 === 0);
+console.log(evenNumbers); // [2, 4, 6, 8, 10]
+```
+
+2. Фильтрация массива объектов, оставляя только объекты, у которых `age` больше 18:
+
+```javascript
+const people = [
+  { name: 'Alice', age: 25 },
+  { name: 'Bob', age: 17 },
+  { name: 'Charlie', age: 32 },
+  { name: 'David', age: 12 }
+];
+
+const adults = people.filter(person => person.age > 18);
+console.log(adults); // [{ name: 'Alice', age:Alice', age: 25 }, { name: 'Charlie', age: 32 }]
+```
+
+3. Фильтрация массива строк, оставляя только строки, которые начинаются с буквы 'a':
+
+```javascript
+const words = ['apple', 'banana', 'avocado', 'cherry', 'apricot'];
+const aWords = words.filter(word => word.startsWith('a'));
+console.log(aWords); // ['apple', 'avocado', 'apricot']
+```
+
+Таким образом, метод `filter()` позволяет создавать новые массивы, 
+содержащие только те элементы, которые соответствуют заданным условиям.
+
+// This
+Аргумент `thisValue` в методе `filter()` 
+используется для определения значения `this` 
+внутри callback-функции. Это может быть полезно, 
+когда вы хотите использовать методы или свойства объекта внутри callback-функции.
+
+Вот несколько примеров использования `thisValue`:
+
+1. **Использование методов объекта внутри callback-функции**:
+
+```javascript
+const person = {
+  name: 'John Doe',
+  greet: function() {
+    return `Hello, my name is ${this.name}`;
+  }
+};
+
+const names = ['John', 'Jane', 'Bob'];
+const greetedNames = names.filter(function(name) {
+  return this.greet().includes(name);
+}, person);
+
+console.log(greetedNames); // Output: ['John']
+```
+
+В этом примере, `thisValue` установлен на объект `person`, 
+что позволяет использовать метод `greet()` внутри callback-функции `filter()`.
+
+2. **Использование свойств объекта внутри callback-функции**:
+
+```javascript
+const wishlist = {
+  items: ['Book', 'Laptop', 'Headphones'],
+  maxPrice: 100,
+  getAffordableItems: function() {
+    return this.items.filter(function(item) {
+      return this.price <= this.maxPrice;
+    }, this);
+  }
+};
+
+const affordableItems = wishlist.getAffordableItems();
+console.log(affordableItems); // Output: []
+```
+
+В этом примере, `thisValue` установлен на объект `wishlist`, 
+что позволяет использовать свойство `maxPrice` 
+внутри callback-функции `filter()`. Однако, 
+поскольку в данном случае объект `wishlist` 
+не содержит свойство `price` для каждого элемента, результат будет пустым массивом.
+
+3. **Использование переменных из внешней области видимости**:
+
+```javascript
+const maxPrice = 100;
+
+const wishlist = {
+  items: [
+    { name: 'Book', price: 50 },
+    { name: 'Laptop', price: 800 },
+    { name: 'Headphones', price: 75 }
+  ],
+  getAffordableItems: function() {
+    return this.items.filter(function(item) {
+      return item.price <= maxPrice;
+    }, this);
+  }
+};
+
+const affordableItems = wishlist.getAffordableItems();
+console.log(affordableItems); // Output: [{ name: 'Book', price: 50 }, { name: 'Headphones', price: 75 }]
+```
+
+В этом примере, `thisValue` установлен на объект `wishlist`, 
+что позволяет использовать переменную `maxPrice` 
+из внешней области видимости внутри callback-функции `filter()`.
+
+Важно отметить, что использование `thisValue` в методе 
+`filter()` не обязательно и зависит от ваших конкретных потребностей. 
+Если вам не нужно использовать методы или свойства 
+объекта внутри callback-функции, вы можете опустить этот аргумент.
+
+

@@ -1,0 +1,28 @@
+﻿Для округления числа до двух знаков в JavaScript, 
+вы можете использовать следующие методы:
+
+1. **Метод .toFixed(2):**
+```javascript
+let number = 3.141592;
+let roundedNumber = number.toFixed(2); // результат: "3.14"
+```
+
+2. **Использование Math.round():**
+```javascript
+let number = 3.141592;
+let roundedNumber = Math.round(number * 100) / 100; // результат: 3.14
+```
+
+3. **Использование Math.floor() или Math.ceil():**
+```javascript
+let number = 3.141592;
+let roundedNumberFloor = Math.floor(number * 100) / 100; // результат: 3.14
+let roundedNumberCeil = Math.ceil(number * 100) / 100; // результат: 3.15
+```
+
+Все эти методы округляют число до двух знаков после запятой. 
+Выбор метода зависит от требований вашей задачи.
+
+
+
+Стоит отметить, что метод .toFixed(2) возвращает строку, а методы Math.round(), Math.floor() и Math.ceil() возвращают число.

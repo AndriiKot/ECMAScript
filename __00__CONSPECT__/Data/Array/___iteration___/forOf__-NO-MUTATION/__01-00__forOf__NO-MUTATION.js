@@ -8,3 +8,10 @@ for(let item of array) {
 }
 console.log(array) // [11, 22, 33, 44]    !!!  NO MUTATION !!!
 // !!! NO MUTATION END !!!
+
+
+/*
+for(const item of array) {
+  item += item     !!! ERROR !!!
+}
+*/

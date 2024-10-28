@@ -1,0 +1,11 @@
+1. Узнать является ли переданое значение
+   массивом:
+
+   Метод возвращает `true`
+
+   ```javascript
+   const arr = [1, 2, 3];
+   console.log(Array.isArray(arr)); // true
+   ```
+
+/

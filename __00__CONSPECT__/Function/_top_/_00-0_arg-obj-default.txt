@@ -20,7 +20,7 @@ function getNormalName({ name }) {
 В этом случае, если вы вызовете функцию 
 без аргументов или с несуществующим объектом 
 (например, `getNormalName()` или `getNormalName(null)`), 
-вы получите ошибку. Ошибка будет следующей:
+вы получите ошибку. Ошибка будет следующей:   !!! Error !!!
 
 ```
 TypeError: Cannot destructure property 'name' of '(intermediate value)' as it is undefined.

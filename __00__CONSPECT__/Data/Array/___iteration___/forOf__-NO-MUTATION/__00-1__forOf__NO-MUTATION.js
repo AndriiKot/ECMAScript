@@ -1,17 +1,23 @@
 ﻿const array = [11, 22, 33, 44];
 
-const len = array.length
 
 // !!! NO MUTATION   !!!
 for(let item of array) {
-  item += item
+  item += 1
+  console.log(item)
 }
+
+// 12
+// 23
+// 34
+// 45
+
 console.log(array) // [11, 22, 33, 44]    !!!  NO MUTATION !!!
 // !!! NO MUTATION END !!!
 
 
 /*
 for(const item of array) {
-  item += item     !!! ERROR !!!
+  item += 1     !!! ERROR !!!
 }
 */

@@ -1,0 +1,36 @@
+
+```javascript
+function nextChar(char) {
+    return String.fromCharCode(char.charCodeAt(0) + 1);
+}
+
+console.log(nextChar('a')); // "b"
+console.log(nextChar('z')); // "{" (код следующего символа после 'z')
+```
+
+Этот код использует метод `charCodeAt` 
+для получения кодового значения символа 
+и `fromCharCode` для преобразования 
+кодового значения обратно в символ.
+ Обратите внимание, что если 
+вы передадите 'z', то получите '{', 
+так как это следующий символ в таблице кодов Unicode. 
+
+Если вам нужно ограничить 
+результат только буквами, 
+вы можете добавить дополнительную логику:
+
+```javascript
+function nextLetter(char) {
+    if (char === 'z') return 'a'; // Обработка перехода с 'z' на 'a'
+    if (char === 'Z') return 'A'; // Обработка перехода с 'Z' на 'A'
+    return String.fromCharCode(char.charCodeAt(0) + 1);
+}
+
+console.log(nextLetter('a')); // "b"
+console.log(nextLetter('z')); // "a"
+console.log(nextLetter('A')); // "B"
+console.log(nextLetter('Z')); // "A"
+```
+
+Этот код обрабатывает переходы с 'z' на 'a' и с 'Z' на 'A'.

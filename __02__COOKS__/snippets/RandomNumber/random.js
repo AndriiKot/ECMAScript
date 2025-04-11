@@ -8,3 +8,5 @@ const max = 100;
 const randomNumber = getRandomNumber(min, max);
 console.log(randomNumber);
 
+console.log(getRandomNumber(0, 9))
+

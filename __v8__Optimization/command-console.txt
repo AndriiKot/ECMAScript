@@ -1,0 +1,7 @@
+
+node --print-opt-code --redirect-code-traces --allow-natives-syntax x.js
+node --allow-natives-syntax --print-bytecode --print-bytecode-filter=do*
+node --print-opt-code --redirect-code-traces --print-bytecode-filter=do*
+
+
+

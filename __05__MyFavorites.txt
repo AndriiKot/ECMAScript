@@ -1,5 +1,25 @@
 ﻿
 01. Владимир Агафонкин
+    Site:
+        https://agafonkin.com/
+    
 02. Murych
+    YouTube:
+        https://www.youtube.com/@AsForJS
+
 03. Timur Shemsedinov
+    YouTube:
+        https://www.youtube.com/TimurShemsedinov
+    GitHub:
+        https://github.com/tshemsedinov
+
+04. Vasily Muravyev
+        GitHub:
+            https://github.com/VasilyMur
+        YouTube:
+            https://www.youtube.com/@stackdev
+
+
+
+
 

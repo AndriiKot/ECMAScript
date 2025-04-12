@@ -9,7 +9,7 @@ let message = 'Begin';
 
 
 const event = () => {
-  let message = { counter, date: new Date() }
+  message = { counter, date: new Date() }
   if (counter >= MAX_VALUE) {
     clearInterval(timer);
     message = 'The End';
